@@ -43,8 +43,14 @@ public class BST {
      * @return the number of items in this tree
      */
     public int size() {
-        // TODO: implement this operation
-        throw new RuntimeException("Not yet implemented!");
+        int size = 1;
+        if (hasLeft()) {
+            size += left.size();
+        }
+        if (hasRight()) {
+            size += right.size();
+        }
+        return size;
     }
 
     private boolean hasLeft() {
