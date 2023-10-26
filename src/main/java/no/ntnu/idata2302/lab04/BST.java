@@ -23,8 +23,20 @@ public class BST {
     }
 
     public BST insert(int givenValue) {
-        // TODO: Implement this operation
-        throw new RuntimeException("Not yet implemented");
+        if (givenValue < value) {
+            if (hasLeft()) {
+                left.insert(givenValue);
+            } else {
+                left = new BST(givenValue);
+            }
+        } else if (givenValue > value) {
+            if (hasRight()) {
+                right.insert(givenValue);
+            } else {
+                right = new BST(givenValue);
+            }
+        }
+        return this;
     }
 
     /**
