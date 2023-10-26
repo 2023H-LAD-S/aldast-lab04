@@ -12,6 +12,10 @@ public class Heap {
         return heap;
     }
 
+    /**
+     * Insert a new value into the minimum heap
+     * @param k the value to insert
+     */
     public void insert(Integer k) {
         array.add(k);
 
