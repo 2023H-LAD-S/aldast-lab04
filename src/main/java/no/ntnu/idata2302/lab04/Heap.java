@@ -75,9 +75,27 @@ public class Heap {
     }
 
 
+    /**
+     * Sets the value of the element at index i to k. And then restores the heap property.
+     * @param i the index of the element to change
+     * @param k the new value
+     */
     public void decreaseKey(int i, int k) {
-        // TODO: Implement this operation
-        throw new RuntimeException("Not yet implemented");
+        if (k >= array.get(i)) {
+            throw new IllegalArgumentException("New value must be smaller than the current value");
+        }
+
+        array.set(i, k);
+
+        while (i > 1) {
+            int parentIndex = parentOf(i);
+
+            if (array.get(parentIndex) <= array.get(i)) {
+                break;
+            }
+            swap(parentIndex, i);
+            i = parentIndex;
+        }
     }
 
     private int parentOf(int index) {
