@@ -37,9 +37,43 @@ public class Heap {
     }
 
     public int takeMinimum() {
-        // TODO: Implement this operation
-        throw new RuntimeException("Not yet implemented");
+        if (array.size() <= 1) {
+            throw new RuntimeException("Heap is empty");
+        }
+
+        // Step 1: Remove the root, which is the minimum element.
+        int min = array.get(1);
+
+        // Step 2: Move the last element to the root.
+        int lastElement = array.remove(array.size() - 1);
+
+        if (array.size() > 1) {
+            array.set(1, lastElement);
+
+            int index = 1;
+
+            // Step 3: Compare this last element with its children.
+            while (leftChildOf(index) < array.size()) {
+                int smallerChildIndex = leftChildOf(index);
+
+                // Check if the right child exists and is smaller than the left child.
+                if (rightChildOf(index) < array.size() && array.get(rightChildOf(index)) < array.get(leftChildOf(index))) {
+                    smallerChildIndex = rightChildOf(index);
+                }
+
+                // Step 4: If the element is larger than one of its children, swap it with the smaller child.
+                if (array.get(index) > array.get(smallerChildIndex)) {
+                    swap(index, smallerChildIndex);
+                    index = smallerChildIndex;
+                } else {
+                    break;
+                }
+            }
+        }
+
+        return min;
     }
+
 
     public void decreaseKey(int i, int k) {
         // TODO: Implement this operation
