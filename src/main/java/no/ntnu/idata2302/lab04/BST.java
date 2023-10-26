@@ -167,9 +167,22 @@ public class BST {
         }
     }
 
+    /**
+     * Formats the tree as a string of ascending values, separated by commas.
+     * @return the formatted string
+     */
     public String format() {
-        // TODO: Implement this operation
-        throw new RuntimeException("Not yet implemented!");
+        var formatted = new StringBuilder();
+        if (hasLeft()) {
+            formatted.append(left.format());
+            formatted.append(", ");
+        }
+        formatted.append(value);
+        if (hasRight()) {
+            formatted.append(", ");
+            formatted.append(right.format());
+        }
+        return formatted.toString();
     }
 
 }
