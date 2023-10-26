@@ -12,16 +12,24 @@ public class Heap {
         return heap;
     }
 
+    public void insert(Integer k) {
+        array.add(k);
+
+        int index = array.size() - 1;
+
+        while (index > 1 && array.get(index) < array.get(parentOf(index))) {
+            swap(index, parentOf(index));
+
+            index = parentOf(index);
+        }
+    }
+
+
     private ArrayList<Integer> array;
 
     public Heap() {
         array = new ArrayList<Integer>();
         array.add(0);
-    }
-
-    public void insert(Integer k) {
-        // TODO: Implement this operation
-        throw new RuntimeException("Not yet implemented");
     }
 
     public int takeMinimum() {
